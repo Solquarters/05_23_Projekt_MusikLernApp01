@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman´s Musik Lern App</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+
+</head>
+<body onload="init(); checkOverlap()">
+    <img id="infoImgId" src="./img/icons8-info-64.png" alt="">
+    <!-- /////////infoOverlay HIER///////////// -->
+
+    
+
+    <div id="mainOverlayDivId">
+
+
+        <div id="overlayDivChild1Id" onclick="event.stopPropagation()">
+            
+        </div>
+    </div>
+
+    <!-- <h2>Notes Ninja <img src="./img/generated-pixel-art.png" alt=""></h2> -->
+
+      <!-- Aus einem Junus Tutorial SVG Animation über Chat GPT kreiert -->
+      <svg class="progressCircleClass" width="100" height="100" id="svgTimerId" >
+        <!-- Outer border circle around the progress bar -->
+        <circle id="outerCircle" cx="50" cy="50" r="33" stroke="#D3D3D3" stroke-width="1" fill="none" />
+        <!-- Inner border circle inside the progress bar -->
+        <circle cx="50" cy="50" r="27" stroke="#D3D3D3" stroke-width="1" fill="none" />
+        <!-- Animated progress circle -->
+        <circle cx="50" cy="50" r="30" stroke="#7AA2E3" stroke-width="6"
+          stroke-dasharray="188.496" stroke-dashoffset="0"
+          stroke-linecap="round" fill="none" transform="rotate(-90, 50, 50)">
+          <!-- //onend is the correct call here, not onended !  -->
+          <animate onend="openOverlayOnAnimationEnd()" id="progressAnimation" attributeName="stroke-dashoffset" dur="2s" from="0" to="-188.496" fill="freeze"
+            calcMode="linear" keySplines="0.25 0.1 0.25 1" keyTimes="0;1" begin="indefinite" />
+        </circle>
+        <text id="countdown"></text>
+      </svg>
+
+   
+            <!-- - chords funktion, nicht nur benachbarte tasten üben, sondern auch zB C E G H oder D F A C  -->
+            <!-- - Implement Pixel Art Animations   -->
+            <!-- - Sounds On Off -->
+            <!-- - Levels Menu : Level 1 Ocatve , Level 2 2 Octaves, Level 3 Different Keys, Level 4 Chromatic  -->
+            <!-- - Progress Stats, Reset Stats -->
+            <!-- - Unlock Levels only when done with challenge -->
+            <!-- - New record animation at end of round -->
+            <!-- <br>- Treble / Bass Clef am Anfang<br> -->
+            <!-- - der pixel ninja könnte kleine animationen machen... ? <br>
+            - zumindest clef oder bass schlüssel einfärben nach Auswahl <br> -->
+       
+            
+
+<div class="motherDivClass">
+
+
+
+<!-- ____________________________Display None when play begins_________________________ -->
+<div id="beforeGameMenuDivId" class="beforeGameMenuDivClass">
+    <!-- ToDo: 
+     -App Info button mit next next Sites
+    - Levels mit lower/higher/low+high range <br>
+    - minimum punkte zum unlock der nächsten level <br>
+    - local storage user score mit Menü zugriff <br>
+    - reset local storage <br>
+    - sound: on off button im menü <br>
+    - burger menü anstelle timer <br>
+    - b und # level - dann chromatic notes full range - Ninja Mode  -->
+
+    <div class="mainLevelsDivClass" id="mainLevelsDivClassId">
+        <button id="level1ButtonId" class="levelButtonClass" onclick="selectLevel(1), toggleButton('level1ButtonId')">Level 1</button>
+        <button id="level2ButtonId" class="levelButtonClass" onclick="selectLevel(2), toggleButton('level2ButtonId')" >Level 2</button>
+        <button id="level3ButtonId" class="levelButtonClass" onclick="selectLevel(3), toggleButton('level3ButtonId')">Level 3</button>
+    </div>
+
+    <div id="setTimerMainDivId">
+        <div>
+            <button id="setDurationButtonId1" onclick="setAnimationDuration(30);toggleButton('setDurationButtonId1')" class="levelButtonClass2">30 Sec</button>
+            <button id="setDurationButtonId2" onclick="setAnimationDuration(45);toggleButton('setDurationButtonId2')" class="levelButtonClass2">45 Sec</button>
+            <button id="setDurationButtonId3" onclick="setAnimationDuration(90);toggleButton('setDurationButtonId3')"class="levelButtonClass2">90 Sec</button>
+        </div>
+        
+        <div id="customTimerDivId">
+            
+            <input placeholder="1 - 60 Minutes" type="number" id="customTimeInput" min="1" max="30" step="1"  oninput="limitInput()" onchange="limitInput()" onkeydown="checkInput(event)">
+            <button onclick="setCustomTime()" class="levelButtonClass2">Custom Time</button>
+        </div>
+    </div>
+    
+ 
+    <button id="startGameButtonId" class="levelButtonClass" onclick="beginGame()">Start game</button>
+</div>
+
+
+<div id="mainImageDivId"></div>
+    <div class="keysContainerClass">
+        <div id="key0Id" class="singleWhiteKeyClass">C</div>
+        <div id="key1Id" class="singleBlackKeyClass" >C♯<br>D♭</div>
+        <div id="key2Id" class="singleWhiteKeyClass" >D</div>
+        <div id="key3Id" class="singleBlackKeyClass" >D♯<br>E♭</div>
+        <div id="key4Id" class="singleWhiteKeyClass" >E</div>
+        <div id="key5Id" class="singleWhiteKeyClass" >F</div>
+        <div id="key6Id" class="singleBlackKeyClass" >F♯<br>G♭</div>
+        <div id="key7Id" class="singleWhiteKeyClass" >G</div>
+        <div id="key8Id" class="singleBlackKeyClass" >G♯<br>A♭</div>
+        <div id="key9Id" class="singleWhiteKeyClass" >A</div>
+        <div id="key10Id" class="singleBlackKeyClass">A♯<br>B♭</div>
+        <div id="key11Id" class="singleWhiteKeyClass">B</div>
+    </div>
+
+
+   
+</div>
+
+
+    
+</body>
+</html>
